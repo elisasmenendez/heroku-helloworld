@@ -6,6 +6,8 @@ import plotly.express as px
 
 
 app = dash.Dash(__name__)
+app.title = 'Hello World Dash + Heroku'
+server = app.server
 
 app.layout = html.Div(
     style={
@@ -37,7 +39,11 @@ app.layout = html.Div(
 
 def update_graph(n):
     df = px.data.iris() # iris is a pandas DataFrame
-    fig = px.scatter(df, x="sepal_width", y="sepal_length")
+    fig = px.scatter(
+        df, 
+        x="sepal_width", 
+        y="sepal_length"
+    )
     return fig
 
 if __name__ == '__main__':
